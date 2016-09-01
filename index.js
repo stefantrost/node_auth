@@ -10,13 +10,18 @@ const passport = require('passport');
 
 require('./auth/auth')(app, passport);
 
-
-app.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
+/**
+ * Example route: requires authentication
+ */
+app.get('/restricted', passport.authenticate('jwt', {session: false}), (req, res) => {
     res.send('You are authenticated!');
 });
 
-app.get('/hello/:param', (req, res) => {
-    res.send(`Hello ${req.params.param}`)
+/**
+ * Example route: no authentication required
+ */
+app.get('/hello', (req, res) => {
+    res.send('Hello World');
 });
 
 const port = config.port;
