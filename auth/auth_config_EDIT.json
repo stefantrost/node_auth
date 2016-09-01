@@ -1,0 +1,10 @@
+{
+  "sendgrid": {
+    "apikey": "YOUR-KEY-HERE",
+    "from": "YOUR-EMAIL-HERE"
+  },
+  "mongodb": {
+    "url": "YOUR-MONGODB-URL-HERE"
+  },
+  "secret": "YOUR-SECRET-HERE"
+}
