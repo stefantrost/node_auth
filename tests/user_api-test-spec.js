@@ -13,10 +13,15 @@ const testuser = {
     pwd: 'tpw123'
 };
 
-frisby.create('Get home, no token')
-    .get(url_stub + '/')
+frisby.create('Get restricted page, no token')
+    .get(url_stub + '/restricted')
     .expectStatus(401)
-.toss();
+    .toss();
+
+frisby.create('Get open page')
+    .get(url_stub + '/hello')
+    .expectStatus(200)
+    .toss();
 
 frisby.create('Post register success')
     .post(url_stub + '/user', {
@@ -27,6 +32,14 @@ frisby.create('Post register success')
     .expectJSONTypes('', {
         auth_token: String
     })
+    .toss();
+
+frisby.create('Post register fail; user already registered')
+    .post(url_stub + '/user',{
+        user: testuser.user,
+        pwd: testuser.pwd
+    }, { json: true })
+    .expectStatus(401)
     .toss();
 
 frisby.create('Post login fail')
