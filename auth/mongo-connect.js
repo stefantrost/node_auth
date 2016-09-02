@@ -29,6 +29,8 @@ Db.signupUser = function(id, pwd, userObject, errCallback, successCallback) {
 
         Users.find({ id }).limit(1).toArray((err, user) => {
             if (user.length) {
+                console.log('User already registered ' + id);
+
                 errCallback();
                 disconnect(db);
 

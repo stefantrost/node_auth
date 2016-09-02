@@ -54,7 +54,7 @@ exports.signup = (req, res) => {
     };
 
     function err() {
-        res.send('Your email is already taken. Please login or retrieve you password.');
+        res.status(401).send('Your email is already taken. Please login or retrieve you password.');
     }
 
     function success() {
