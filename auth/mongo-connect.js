@@ -18,7 +18,7 @@ function disconnect(db) {
     console.log('DB connection closed');
 }
 
-const Db = {};
+let Db = {};
 
 Db.signupUser = function(id, pwd, userObject, errCallback, successCallback) {
     connect((err, db) => {
